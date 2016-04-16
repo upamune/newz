@@ -9,13 +9,13 @@
                 <h2>{{item.title}}</h2>
                 <p>{{item.score}}pts, {{item.kids.length}}comments</p>
                 <p>{{item.domain}}</p>
-                <ion-item-options>
-                    <button primary (click)="addFavorite($event)">
-                        <ion-icon name="star"></ion-icon>
-                        Fav
-                    </button>
-                </ion-item-options>
             </ion-item>
+            <ion-item-options>
+                <button primary (click)="addFavorite(item)">
+                    <ion-icon name="star"></ion-icon>
+                    Fav
+                </button>
+            </ion-item-options>
         </ion-item-sliding>
     </ion-list>
 </ion-content>
