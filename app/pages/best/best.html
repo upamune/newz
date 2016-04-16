@@ -4,8 +4,8 @@
 
 <ion-content class="best">
     <ion-list>
-        <ion-item-sliding *ngFor="#item of items" (click)="clickItem(item)">
-            <ion-item>
+        <ion-item-sliding *ngFor="#item of items">
+            <ion-item (click)="clickItem(item)">
                 <h2>{{item.title}}</h2>
                 <p>{{item.score}}pts, {{item.kids.length}}comments</p>
                 <p>{{item.domain}}</p>
