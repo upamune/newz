@@ -1,0 +1,24 @@
+<ion-navbar *navbar>
+    <ion-title>Author</ion-title>
+</ion-navbar>
+
+<ion-content class="author">
+    <ion-item>
+        <ion-avatar item-left>
+            <img src="img/icon.jpg">
+        </ion-avatar>
+        <h2>Masato Yamamoto</h2>
+    </ion-item>
+    <ion-item (click)="openURL('https://www.upamune.com')">
+        <ion-icon name="md-globe" item-left></ion-icon>
+        upamune.com
+    </ion-item>
+    <ion-item (click)="openURL('https://twitter.com/upamune')">
+        <ion-icon name="logo-twitter" item-left></ion-icon>
+        @ upamune
+    </ion-item>
+    <ion-item (click)="openURL('https://github.com/upamune')">
+        <ion-icon name="logo-github" item-left></ion-icon>
+        @ upamune
+    </ion-item>
+</ion-content>
