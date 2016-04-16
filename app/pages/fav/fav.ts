@@ -11,8 +11,12 @@ export class Fav {
     private items : Array<NewsItem>;
     
     constructor(private newsService: FavoriteNewsService) {
+        this.update();
+        this.newsService.favChanged.subscribe(() => this.update());
+    }
+    
+    private update() {
         this.items = [];
-        
         this.newsService.fetchItemIds().subscribe(
             data => {
                 this.itemIds = data;
@@ -33,12 +37,6 @@ export class Fav {
     
     private deleteFavorite(item: NewsItem) {
         this.newsService.remove(item.getId());
-        this.newsService.save();
-        this.items.some((itm: NewsItem, i: number) => {
-            if(item.getId() == itm.getId()) {
-                this.items.splice(i,1);
-            }
-        });
     }
 
 }

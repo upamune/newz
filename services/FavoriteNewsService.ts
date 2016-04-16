@@ -1,6 +1,6 @@
 import { Http } from 'angular2/http';
 import 'rxjs/add/operator/map';
-import {Injectable} from "angular2/core";
+import {Injectable, EventEmitter} from "angular2/core";
 import {Storage, LocalStorage} from 'ionic-angular';
 import {Observable} from 'rxjs'
 
@@ -9,10 +9,12 @@ export class FavoriteNewsService {
     
     private storage: Storage;
     private key: string;
+    public favChanged : EventEmitter<any>;
 
     constructor(private http: Http) {
         this.storage = new Storage(LocalStorage);
         this.key = "newz-favorite-news-items-key";
+        this.favChanged = new EventEmitter();
     }
     
     private stringToNumArray(str: string): Array<number> {
@@ -37,6 +39,7 @@ export class FavoriteNewsService {
                 this.save(ids);
             }
         );
+        this.favChanged.emit(null);
     }
 
     remove(itemId: number) : void {
@@ -47,6 +50,7 @@ export class FavoriteNewsService {
                 this.save(ids);
             }
         );
+        this.favChanged.emit(null);
     }
     
     get(): Observable {
@@ -59,6 +63,7 @@ export class FavoriteNewsService {
     
     reset(): void {
         this.storage.remove(this.key);
+        this.favChanged.emit(null);
     }
     
 }
