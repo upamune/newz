@@ -1,4 +1,5 @@
 import {Page} from 'ionic-angular';
+import {FavoriteNewsService} from '../../../services/FavoriteNewsService'
 import {NewsService} from '../../../services/NewsService'
 import {NewsItem} from '../../../models/NewsItem'
 
@@ -8,7 +9,7 @@ import {NewsItem} from '../../../models/NewsItem'
 export class Best {
     private itemIds: Array<number>;
     private items : Array<NewsItem>;
-    constructor(private newsService: NewsService) {
+    constructor(private newsService: NewsService,private favoriteService: FavoriteNewsService) {
         this.items = [];
         
         this.newsService.fetchItemIds().subscribe(
@@ -23,6 +24,15 @@ export class Best {
                     );
                 });
             });
+    }
+
+    private clickItem(item: NewsItem) {
+        this.addFavorite(item);
+    }
+
+    private addFavorite(item: NewsItem) {
+        this.favoriteService.add(item.getId());
+        this.favoriteService.save();
     }
 }
 

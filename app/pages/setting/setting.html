@@ -3,9 +3,11 @@
 </ion-navbar>
 
 <ion-content padding class="setting">
-    <h2>Welcome to Ionic!</h2>
-    <p>
-        Take a look at the <code>app/</code> directory to add or change tabs,
-        update any existing page or create new pages.
-    </p>
+    <ion-item-divider light>FAVORITE</ion-item-divider>
+    <ion-item>Count <span item-right>{{length}}</span></ion-item>
+    <button block danger (click)="clickDelete()">Delete</button>
+
+    <ion-item-divider light>INFORMATION</ion-item-divider>
+    <ion-item>Version <span item-right>0.1</span></ion-item>
+    <ion-item detail-push [navPush]="authorPage" >Author</ion-item>
 </ion-content>

@@ -1,5 +1,6 @@
 import {Page} from 'ionic-angular';
 import {NewNewsService} from '../../../services/NewNewsService'
+import {FavoriteNewsService} from '../../../services/FavoriteNewsService'
 import {NewsItem} from '../../../models/NewsItem'
 
 @Page({
@@ -8,9 +9,8 @@ import {NewsItem} from '../../../models/NewsItem'
 export class New {
     private itemIds: Array<number>;
     private items : Array<NewsItem>;
-    constructor(private newsService: NewNewsService) {
+    constructor(private newsService: NewNewsService, private favoriteService: FavoriteNewsService) {
         this.items = [];
-
         this.newsService.fetchItemIds().subscribe(
             data => {
                 this.itemIds = data;
@@ -23,5 +23,14 @@ export class New {
                     );
                 });
             });
+    }
+    
+    private clickItem(item: NewsItem) {
+        this.addFavorite(item);
+    }
+
+    private addFavorite(item: NewsItem) {
+        this.favoriteService.add(item.getId());
+        this.favoriteService.save();
     }
 }

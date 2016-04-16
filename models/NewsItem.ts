@@ -24,6 +24,10 @@ export class NewsItem {
         this.domain = this.extractDomainFromUrl(this.url);
     }
     
+    public getId(): number {
+        return this.id;
+    }
+    
     private extractDomainFromUrl(url: string): string {
         let domain;
         if (url.indexOf("://") > -1) {

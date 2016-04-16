@@ -5,7 +5,6 @@ import {Best} from '../best/best';
 import {Fav} from '../fav/fav';
 import {Setting} from '../setting/setting';
 
-
 @Page({
   templateUrl: 'build/pages/tabs/tabs.html'
 })
