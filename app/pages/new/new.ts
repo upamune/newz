@@ -1,4 +1,5 @@
 import {Page} from 'ionic-angular';
+import {InAppBrowser} from 'ionic-native';
 import {NewNewsService} from '../../../services/NewNewsService'
 import {FavoriteNewsService} from '../../../services/FavoriteNewsService'
 import {NewsItem} from '../../../models/NewsItem'
@@ -26,11 +27,10 @@ export class New {
     }
     
     private clickItem(item: NewsItem) {
-        this.addFavorite(item);
+        let ref = InAppBrowser.open(item.getUrl(), '_blank', 'location=no');
     }
 
     private addFavorite(item: NewsItem) {
         this.favoriteService.add(item.getId());
-        this.favoriteService.save();
     }
 }

@@ -1,4 +1,5 @@
 import {Page} from 'ionic-angular';
+import {InAppBrowser} from 'ionic-native';
 import {FavoriteNewsService} from '../../../services/FavoriteNewsService'
 import {NewsItem} from '../../../models/NewsItem'
 
@@ -26,11 +27,8 @@ export class Fav {
             });
     }
 
-    private update() {
-    }
-    
     private clickItem(item: NewsItem) {
-        this.deleteFavorite(item);
+        let ref = InAppBrowser.open(item.getUrl(), '_blank', 'location=yes');
     }
     
     private deleteFavorite(item: NewsItem) {

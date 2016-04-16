@@ -28,6 +28,10 @@ export class NewsItem {
         return this.id;
     }
     
+    public getUrl(): string {
+        return this.url;
+    }
+    
     private extractDomainFromUrl(url: string): string {
         let domain;
         if (url.indexOf("://") > -1) {
